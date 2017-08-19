@@ -55,10 +55,11 @@ public:
     计数的循环是用来找到第k-1个元素的，最后return的时候再判断第k个元素是哪一个
     在每次计数的循环中要先判断两个数组指针是否超界，在最后return之前也要判断一次
 */
-public class Solution {
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int len1 = nums1.length;
-        int len2 = nums2.length;
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int len1 = nums1.size();
+        int len2 = nums2.size();
         int total = len1 + len2;
         if(total % 2==0){
             return (findKth(nums1,nums2,total/2)+findKth(nums1,nums2,total/2+1))/2.0;
@@ -66,12 +67,12 @@ public class Solution {
             return findKth(nums1,nums2,total/2+1);
         }
     }
-    private int findKth(int[] nums1, int[] nums2, int k){
+    int findKth(vector<int>& nums1, vector<int>& nums2, int k){
         int p = 0, q = 0;//p计数nums1,q计数nums2;
         for(int i = 0; i < k - 1; i++){
-            if(p>=nums1.length && q<nums2.length){
+            if(p>=nums1.size() && q<nums2.size()){
                 q++;
-            } else if(q>=nums2.length && p<nums1.length){
+            } else if(q>=nums2.size() && p<nums1.size()){
                 p++;
             } else if(nums1[p]>nums2[q]){
                 q++;
@@ -79,15 +80,15 @@ public class Solution {
                 p++;
             }
         }
-        if(p>=nums1.length) {
+        if(p>=nums1.size()) {
             return nums2[q];
-        } else if(q>=nums2.length) {
+        } else if(q>=nums2.size()) {
             return nums1[p];
         } else {
-            return Math.min(nums1[p],nums2[q]);
+            return min(nums1[p],nums2[q]);
         }
     }
-}
+};
 
 class Solution  
 {  
