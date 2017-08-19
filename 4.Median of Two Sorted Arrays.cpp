@@ -41,8 +41,54 @@ public:
         }  
     }  
   
-};  
-  
+}; 
+/*
+归并计数法: Merge and Count
+复杂度:
+    时间O(n) 空间O(1)
+思路:
+    如果对时间复杂度没有要求，这个方法是实现起来最简单的，我们只需要从下往上依次数(n+m)/2个元素即可。
+    由于两个数组都已经排序，我们可以使用两个指针指向数组“底部”，通过比较两个数组“底部”的元素大小来决定
+    计哪一个元素，同时将其所在数组的指针“向上”移一位。为了方便处理总元素为偶数的情况，
+    这里将找中位数变成找第k小的元素。
+注意：
+    计数的循环是用来找到第k-1个元素的，最后return的时候再判断第k个元素是哪一个
+    在每次计数的循环中要先判断两个数组指针是否超界，在最后return之前也要判断一次
+*/
+public class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int len1 = nums1.length;
+        int len2 = nums2.length;
+        int total = len1 + len2;
+        if(total % 2==0){
+            return (findKth(nums1,nums2,total/2)+findKth(nums1,nums2,total/2+1))/2.0;
+        } else {
+            return findKth(nums1,nums2,total/2+1);
+        }
+    }
+    private int findKth(int[] nums1, int[] nums2, int k){
+        int p = 0, q = 0;//p计数nums1,q计数nums2;
+        for(int i = 0; i < k - 1; i++){
+            if(p>=nums1.length && q<nums2.length){
+                q++;
+            } else if(q>=nums2.length && p<nums1.length){
+                p++;
+            } else if(nums1[p]>nums2[q]){
+                q++;
+            } else {
+                p++;
+            }
+        }
+        if(p>=nums1.length) {
+            return nums2[q];
+        } else if(q>=nums2.length) {
+            return nums1[p];
+        } else {
+            return Math.min(nums1[p],nums2[q]);
+        }
+    }
+}
+
 class Solution  
 {  
 public:  
