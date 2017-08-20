@@ -147,14 +147,15 @@ string类的迭代器处理：
 ----------------
     通过定义ostringstream和istringstream变量实现，<sstream>头文件中
     例如：
-        string input("hello,this is a test");
+```c
+        string input("hello,this is a test");
         istringstream is(input);
         string s1,s2,s3,s4;
         is>>s1>>s2>>s3>>s4;//s1="hello,this",s2="is",s3="a",s4="test"
         ostringstream os;
         os<<s1<<s2<<s3<<s4;
         cout<<os.str();
-    
+```
 标准C++库字符串类std::string的用法
 ----------------------
     #include<string>
