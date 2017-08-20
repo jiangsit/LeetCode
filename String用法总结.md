@@ -160,6 +160,7 @@ string类的迭代器处理：
     std::string s1;
     std::string s3(s2);
     std::string s2("this is a string");
+    
     begin       得到指向字符串开头的Iterator
     end       得到指向字符串结尾的Iterator
     rbegin       得到指向反向字符串开头的Iterator
