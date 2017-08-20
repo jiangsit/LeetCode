@@ -4,91 +4,91 @@ string(const char *s);    //用c字符串s初始化string(int n,char c);     //�
 
 string类的字符操作：
 ======================
-const char &operator[](int n)const;
-const char &at(int n)const;
-char &operator[](int n);
-char &at(int n);
-operator[]和at()均返回当前字符串中第n个字符的位置，但at函数提供范围检查，当越界时会抛出out_of_range异常，下标运算符[]不提供检查访问。
-const char *data()const;//返回一个非null终止的c字符数组
-const char *c_str()const;//返回一个以null终止的c字符串
-int copy(char *s, int n, int pos = 0) const;//把当前串中以pos开始的n个字符拷贝到以s为起始位置的字符数组中，返回实际拷贝的数目
-注：对于string中对象字符的处理，有很多已有的函数在CCtype头文件中，可以很方便的应用
+const char &operator[](int n)const;<br />
+const char &at(int n)const;<br />
+char &operator[](int n);<br />
+char &at(int n);<br />
+operator[]和at()均返回当前字符串中第n个字符的位置，但at函数提供范围检查，当越界时会抛出out_of_range异常，下标运算符[]不提供检查访问。<br />
+const char *data()const;//返回一个非null终止的c字符数组<br />
+const char *c_str()const;//返回一个以null终止的c字符串<br />
+int copy(char *s, int n, int pos = 0) const;//把当前串中以pos开始的n个字符拷贝到以s为起始位置的字符数组中，返回实际拷贝的数目<br />
+注：对于string中对象字符的处理，有很多已有的函数在CCtype头文件中，可以很方便的应用<br />
 
 string的特性描述:
 ====================
-int capacity()const;    //返回当前容量（即string中不必增加内存即可存放的元素个数）
-int max_size()const;    //返回string对象中可存放的最大字符串的长度
-int size()const;        //返回当前字符串的大小
-int length()const;       //返回当前字符串的长度
-bool empty()const;        //当前字符串是否为空
-void resize(int len,char c);//把字符串当前大小置为len，并用字符c填充不足的部分
-string类的输入输出操作:string类重载运算符operator>>用于输入，同样重载运算符operator<<用于输出操作。
-函数getline(istream &in,string &s);用于从输入流in中读取字符串到s中，以换行符'\n'分开。
+int capacity()const;    //返回当前容量（即string中不必增加内存即可存放的元素个数）<br />
+int max_size()const;    //返回string对象中可存放的最大字符串的长度<br />
+int size()const;        //返回当前字符串的大小<br />
+int length()const;       //返回当前字符串的长度<br />
+bool empty()const;        //当前字符串是否为空<br />
+void resize(int len,char c);//把字符串当前大小置为len，并用字符c填充不足的部分<br />
+string类的输入输出操作:string类重载运算符operator>>用于输入，同样重载运算符operator<<用于输出操作。<br />
+函数getline(istream &in,string &s);用于从输入流in中读取字符串到s中，以换行符'\n'分开。<br />
 
 string的赋值：
 =====================
-string &operator=(const string &s);//把字符串s赋给当前字符串
-string &assign(const char *s);//用c类型字符串s赋值
-string &assign(const char *s,int n);//用c字符串s开始的n个字符赋值
-string &assign(const string &s);//把字符串s赋给当前字符串
-string &assign(int n,char c);//用n个字符c赋值给当前字符串
-string &assign(const string &s,int start,int n);//把字符串s中从start开始的n个字符赋给当前字符串
-string &assign(const_iterator first,const_itertor last);//把first和last迭代器之间的部分赋给字符串
+string &operator=(const string &s);//把字符串s赋给当前字符串<br />
+string &assign(const char *s);//用c类型字符串s赋值<br />
+string &assign(const char *s,int n);//用c字符串s开始的n个字符赋值<br />
+string &assign(const string &s);//把字符串s赋给当前字符串<br />
+string &assign(int n,char c);//用n个字符c赋值给当前字符串<br />
+string &assign(const string &s,int start,int n);//把字符串s中从start开始的n个字符赋给当前字符串<br />
+string &assign(const_iterator first,const_itertor last);//把first和last迭代器之间的部分赋给字符串<br />
 
 string的连接：
 =======================
-string &operator+=(const string &s);//把字符串s连接到当前字符串的结尾 
-string &append(const char *s);            //把c类型字符串s连接到当前字符串结尾
-string &append(const char *s,int n);//把c类型字符串s的前n个字符连接到当前字符串结尾
-string &append(const string &s);    //同operator+=()
-string &append(const string &s,int pos,int n);//把字符串s中从pos开始的n个字符连接到当前字符串的结尾
-string &append(int n,char c);        //在当前字符串结尾添加n个字符c
-string &append(const_iterator first,const_iterator last);//把迭代器first和last之间的部分连接到当前字符串的结尾
+string &operator+=(const string &s);//把字符串s连接到当前字符串的结尾 <br />
+string &append(const char *s);            //把c类型字符串s连接到当前字符串结尾<br />
+string &append(const char *s,int n);//把c类型字符串s的前n个字符连接到当前字符串结尾<br />
+string &append(const string &s);    //同operator+=()<br />
+string &append(const string &s,int pos,int n);//把字符串s中从pos开始的n个字符连接到当前字符串的结尾<br />
+string &append(int n,char c);        //在当前字符串结尾添加n个字符c<br />
+string &append(const_iterator first,const_iterator last);//把迭代器first和last之间的部分连接到当前字符串的结尾<br />
 
 string的比较：
 ==============================
-bool operator==(const string &s1,const string &s2)const;//比较两个字符串是否相等
-运算符">","<",">=","<=","!="均被重载用于字符串的比较；
-int compare(const string &s) const;//比较当前字符串和s的大小
-int compare(int pos, int n,const string &s)const;//比较当前字符串从pos开始的n个字符组成的字符串与s的大小
-int compare(int pos, int n,const string &s,int pos2,int n2)const;//比较当前字符串从pos开始的n个字符组成的字符串与s中pos2开始的n2个字符组成的字符串的大小
-int compare(const char *s) const;
-int compare(int pos, int n,const char *s) const;
-int compare(int pos, int n,const char *s, int pos2) const;
-compare函数在>时返回1，<时返回-1，==时返回0   
+bool operator==(const string &s1,const string &s2)const;//比较两个字符串是否相等<br />
+运算符">","<",">=","<=","!="均被重载用于字符串的比较；<br />
+int compare(const string &s) const;//比较当前字符串和s的大小<br />
+int compare(int pos, int n,const string &s)const;//比较当前字符串从pos开始的n个字符组成的字符串与s的大小<br />
+int compare(int pos, int n,const string &s,int pos2,int n2)const;//比较当前字符串从pos开始的n个字符组成的字符串与s中pos2开始的n2个字符组成的字符串的大小<br />
+int compare(const char *s) const;<br />
+int compare(int pos, int n,const char *s) const;<br />
+int compare(int pos, int n,const char *s, int pos2) const;<br />
+compare函数在>时返回1，<时返回-1，==时返回0   <br />
 
 string的子串：
 =======================
-string substr(int pos = 0,int n = npos) const;//返回pos开始的n个字符组成的字符串
+string substr(int pos = 0,int n = npos) const;//返回pos开始的n个字符组成的字符串<br />
 
 string的交换：
 ========================
-void swap(string &s2);    //交换当前字符串与s2的值
+void swap(string &s2);    //交换当前字符串与s2的值<br />
 
 string类的查找函数：
 ===========================
-int find(char c, int pos = 0) const;//从pos开始查找字符c在当前字符串的位置
-int find(const char *s, int pos = 0) const;//从pos开始查找字符串s在当前串中的位置
-int find(const char *s, int pos, int n) const;//从pos开始查找字符串s中前n个字符在当前串中的位置
-int find(const string &s, int pos = 0) const;//从pos开始查找字符串s在当前串中的位置
-//查找成功时返回所在位置，失败返回string::npos的值 
-int rfind(char c, int pos = npos) const;//从pos开始从后向前查找字符c在当前串中的位置
-int rfind(const char *s, int pos = npos) const;
-int rfind(const char *s, int pos, int n = npos) const;
-int rfind(const string &s,int pos = npos) const;
-//从pos开始从后向前查找字符串s中前n个字符组成的字符串在当前串中的位置，成功返回所在位置，失败时返回string::npos的值 
-int find_first_of(char c, int pos = 0) const;//从pos开始查找字符c第一次出现的位置
-int find_first_of(const char *s, int pos = 0) const;
-int find_first_of(const char *s, int pos, int n) const;
-int find_first_of(const string &s,int pos = 0) const;
-//从pos开始查找当前串中第一个在s的前n个字符组成的数组里的字符的位置。查找失败返回string::npos 
-int find_first_not_of(char c, int pos = 0) const;
-int find_first_not_of(const char *s, int pos = 0) const;
-int find_first_not_of(const char *s, int pos,int n) const;
-int find_first_not_of(const string &s,int pos = 0) const;
-//从当前串中查找第一个不在串s中的字符出现的位置，失败返回string::npos 
-int find_last_of(char c, int pos = npos) const;
-int find_last_of(const char *s, int pos = npos) const;
+int find(char c, int pos = 0) const;//从pos开始查找字符c在当前字符串的位置<br />
+int find(const char *s, int pos = 0) const;//从pos开始查找字符串s在当前串中的位置<br />
+int find(const char *s, int pos, int n) const;//从pos开始查找字符串s中前n个字符在当前串中的位置<br />
+int find(const string &s, int pos = 0) const;//从pos开始查找字符串s在当前串中的位置<br />
+//查找成功时返回所在位置，失败返回string::npos的值 <br />
+int rfind(char c, int pos = npos) const;//从pos开始从后向前查找字符c在当前串中的位置<br />
+int rfind(const char *s, int pos = npos) const;<br />
+int rfind(const char *s, int pos, int n = npos) const;<br />
+int rfind(const string &s,int pos = npos) const;<br />
+//从pos开始从后向前查找字符串s中前n个字符组成的字符串在当前串中的位置，成功返回所在位置，失败时返回string::npos的值 <br />
+int find_first_of(char c, int pos = 0) const;//从pos开始查找字符c第一次出现的位置<br />
+int find_first_of(const char *s, int pos = 0) const;<br />
+int find_first_of(const char *s, int pos, int n) const;<br />
+int find_first_of(const string &s,int pos = 0) const;<br />
+//从pos开始查找当前串中第一个在s的前n个字符组成的数组里的字符的位置。查找失败返回string::npos <br />
+int find_first_not_of(char c, int pos = 0) const;<br />
+int find_first_not_of(const char *s, int pos = 0) const;<br />
+int find_first_not_of(const char *s, int pos,int n) const;<br />
+int find_first_not_of(const string &s,int pos = 0) const;<br />
+//从当前串中查找第一个不在串s中的字符出现的位置，失败返回string::npos <br />
+int find_last_of(char c, int pos = npos) const;<br />
+int find_last_of(const char *s, int pos = npos) const;<br />
 int find_last_of(const char *s, int pos, int n = npos) const;
 int find_last_of(const string &s,int pos = npos) const; 
 int find_last_not_of(char c, int pos = npos) const;
