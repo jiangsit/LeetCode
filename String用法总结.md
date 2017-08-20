@@ -1,3 +1,4 @@
+# String 用法详解
 string类的构造函数：
 -------------------
     string(const char *s);    //用c字符串s初始化string(int n,char c);     //用n个字符c初始化
