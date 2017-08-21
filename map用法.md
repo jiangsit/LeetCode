@@ -7,14 +7,18 @@
 -----------
     使用map得包含map类所在的头文件：　
     #include <map> //注意，STL头文件没有扩展名.h
+    
   1.1 map的构造
+------------
     Template<class T1, class T2>
     map(); // 默认构造函数
     map(const map& m) // 拷贝构造函数
     map(iterator begin, iterator end ); //区间构造函数
     map(iterator begin, iterator end, const traits& _compare) //带比较谓词的构造函数
     map(iterator begin, iterator end, const traits& _compare, const allocator& all) //带分配器
+    
   1.2 map定义
+----------------
     1.2.1map的基本定义
     map对象是模板类，需要关键字和存储对象两个模板参数：
     std:map<int, string> personnel;
@@ -28,7 +32,8 @@
   
 2.map的方法
 ------------
-  2.1 在map中插入元素
+2.1 在map中插入元素
+------------
     三种插入方式：
     2.1.1用insert方法插入pair对象：
      enumMap.insert(pair<int, Cstring>(1, “One”));
@@ -39,7 +44,9 @@
     enumMap[2] = "Two";
     ......
     这样非常直观，但存在一个性能的问题。插入2时,先在enumMap中查找主键为2的项，没发现，然后将一个新的对象插入enumMap，键是2，值是一个空字符串，插入完成后，将字符串赋为"Two"; 该方法会将每个值都赋为缺省值，然后再赋为显示的值，如果元素是类对象，则开销比较大。用前两种方法可以避免开销。
-  2.2 查找并获取map中元素
+    
+2.2 查找并获取map中元素
+--------------------
     2.2.1下标操作符给出了获得一个值的最简单方法：
     CString tmp = enumMap[2];
     但是,只有当map中有这个键的实例时才对，否则会自动插入一个实例，值为初始化值。
@@ -57,7 +64,9 @@
     通过map对象的方法获取的iterator数据类型是一个std::pair对象，包括两个数据。
     iterator->first 关键字(key)
     iterator->second 存储的数据(value)
+    
   2.3 从map中删除元素
+-------------------------
     2.3.1移除某个map中某个条目用erase()
     该成员方法的定义如下：
     1．iterator erase(iterator it); //通过一个条目对象删除
@@ -66,6 +75,7 @@
     2.3.2清除所有的元素clear()
     clear()就相当于 enumMap.erase(enumMap.begin(), enumMap.end());
   2.4 map中swap的用法
+----------------
     map中的swap不是一个容器中的元素交换，而是两个容器交换；
     For example：
     #include <map>
@@ -104,6 +114,7 @@
     cout << "." << endl;
     }
   2.5 map的sort问题
+-------------------  
     Map中的元素是自动按key升序排序,所以不能对map用sort函数：
     For example：
     #include <map>
@@ -132,6 +143,7 @@
     7 30
     请按任意键继续. . .
   2.6 map的基本操作函数
+-----------------  
     C++ Maps是一种关联式容器，包含“关键字/值”对
     begin() 返回指向map头部的迭代器
     clear(） 删除所有元素
@@ -152,8 +164,9 @@
     swap() 交换两个map
     upper_bound() 返回键值>给定元素的第一个位置
     value_comp() 返回比较元素value的函数
+ 
   3.例子
-
+-----------------
     #include <iostream>
     #include <map>
     using namespace std;
