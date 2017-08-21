@@ -167,60 +167,64 @@
  
   3.例子
 -----------------
+```c
     #include <iostream>
     #include <map>
     using namespace std;
     int main(void)
     {
-    map<char,int,less<char> > map1;
-    map<char,int,less<char> >::iterator mapIter;
-    //char 是键的类型，int是值的类型
-    //下面是初始化，与数组类似
-    //也可以用map1.insert(map<char,int,less<char> >::value_type('c',3));
-    map1['c']=3;
-    map1['d']=4;
-    map1['a']=1;
-    map1['b']=2;
-    for(mapIter=map1.begin();mapIter!=map1.end();++mapIter)
-    cout<<" "<<(*mapIter).first<<": "<<(*mapIter).second;
-    //first对应定义中的char键，second对应定义中的int值
-    //检索对应于d键的值是这样做的：
-    map<char,int,less<char> >::const_iterator ptr;
-    ptr=map1.find('d');
-    cout<<''\n''<<" "<<(*ptr).first<<" 键对应于值："<<(*ptr).second;
-    cin.get();
-    return 0;
+      map<char,int,less<char> > map1;
+      map<char,int,less<char> >::iterator mapIter;
+      //char 是键的类型，int是值的类型
+      //下面是初始化，与数组类似
+      //也可以用map1.insert(map<char,int,less<char> >::value_type('c',3));
+      map1['c']=3;
+      map1['d']=4;
+      map1['a']=1;
+      map1['b']=2;
+      for(mapIter=map1.begin();mapIter!=map1.end();++mapIter)
+        cout<<" "<<(*mapIter).first<<": "<<(*mapIter).second;
+      //first对应定义中的char键，second对应定义中的int值
+      //检索对应于d键的值是这样做的：
+      map<char,int,less<char> >::const_iterator ptr;
+      ptr=map1.find('d');
+      cout<<''\n''<<" "<<(*ptr).first<<" 键对应于值："<<(*ptr).second;
+      cin.get();
+      return 0;
     }
+```
     从以上例程中，我们可以看到map对象的行为和一般数组的行为类似。Map允许两个或多个值使用比较操作符。下面我们再看看multimap:
+```c
     #include <iostream>
     #include <map>
     #include <string>
     using namespace std;
     int main(void)
     {
-    multimap<string,string,less<string> >mulmap;
-    multimap<string,string,less<string> >::iterator p;
-    //初始化多重映射mulmap:
-    typedef multimap<string,string,less<string> >::value_type vt;
-    typedef string s;
-    mulmap.insert(vt(s("Tom "),s("is a student")));
-    mulmap.insert(vt(s("Tom "),s("is a boy")));
-    mulmap.insert(vt(s("Tom "),s("is a bad boy of blue!")));
-    mulmap.insert(vt(s("Jerry "),s("is a student")));
-    mulmap.insert(vt(s("Jerry "),s("is a beatutiful girl")));
-    mulmap.insert(vt(s("DJ "),s("is a student")));
-    //输出初始化以后的多重映射mulmap:
-    for(p=mulmap.begin();p!=mulmap.end();++p)
-    cout<<(*p).first<<(*p).second<<endl;
-    //检索并输出Jerry键所对应的所有的值
-    cout<<"find Jerry :"<<endl;
-    p=mulmap.find(s("Jerry "));
-    while((*p).first=="Jerry ")
-    {
-    cout<<(*p).first<<(*p).second<<endl;
-    ++p;
+      multimap<string,string,less<string> >mulmap;
+      multimap<string,string,less<string> >::iterator p;
+      //初始化多重映射mulmap:
+      typedef multimap<string,string,less<string> >::value_type vt;
+      typedef string s;
+      mulmap.insert(vt(s("Tom "),s("is a student")));
+      mulmap.insert(vt(s("Tom "),s("is a boy")));
+      mulmap.insert(vt(s("Tom "),s("is a bad boy of blue!")));
+      mulmap.insert(vt(s("Jerry "),s("is a student")));
+      mulmap.insert(vt(s("Jerry "),s("is a beatutiful girl")));
+      mulmap.insert(vt(s("DJ "),s("is a student")));
+      //输出初始化以后的多重映射mulmap:
+      for(p=mulmap.begin();p!=mulmap.end();++p)
+        cout<<(*p).first<<(*p).second<<endl;
+      //检索并输出Jerry键所对应的所有的值
+      cout<<"find Jerry :"<<endl;
+      p=mulmap.find(s("Jerry "));
+      while((*p).first=="Jerry ")
+      {
+        cout<<(*p).first<<(*p).second<<endl;
+        ++p;
+      }
+      cin.get();
+      return 0;
     }
-    cin.get();
-    return 0;
-    }
+```
     在map中是不允许一个键对应多个值的，在multimap中，不支持operator[],也就是说不支持map中允许的下标操作。
